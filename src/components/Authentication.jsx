@@ -6,19 +6,24 @@ export default function Authenticate({ token }) {
   const [error, setError] = useState(null);
 
   console.log("Token: ", token);
-
-  async function handleClick() {
+  async function authenticate(token) {
     try {
       const response = await fetch(
-        "https://fsa-jwt-practice.herokuapp.com/authenticate",
+        `${BASE_URL}/someEndPoint`,
         {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            "Authorization": `Bearer ${token}`,
           },
-        }
-      );
+          body: JSON.stringify({ 
+            user:{
+                username,
+                password,
+            }
+            /* whatever things you need to send to the API */ })
+        });
+
       const result = await response.json();
       console.log("Authenticate Result: ", result);
       setSuccessMessage(result.message);
@@ -26,12 +31,15 @@ export default function Authenticate({ token }) {
       setError(error.message);
     }
   }
+  
 
   return (
     <div>
-      <h2>Authenticate</h2>
+      
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
+      <Profile/>
+      <AddPost/>
       <button onClick={handleClick}>Authenticate Token!</button>
     </div>
   );

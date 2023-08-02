@@ -34,11 +34,12 @@ async function handleSubmit(e) {
       console.log(result.data.token);
       setToken(result.data.token);
       //console.log(token);
-      authenticate(token);
       setSuccessMessage(result.data.message);
+      
       setUsername("");
       setPassword("");
-      <Profile/>
+      
+
     } catch (error) {
       setError(error.message);
     }
@@ -66,11 +67,12 @@ async function handleSubmit(e) {
       const result = await response.json();
       console.log("Authenticate Result: ", result);
       setSuccessMessage(result.message);
+      <Profile/>
     } catch (error) {
       setError(error.message);
     }
+  
   }
-
 
 
 
@@ -97,9 +99,9 @@ async function handleSubmit(e) {
             <input type='password' value={password}
             onChange={(e)=>{setPassword(e.target.value)}}/>
             </label>
-           <button >LOG IN</button>
+           <button onClick={authenticate}>LOG IN</button>
            <Link to='/register'>Don't have an account? Sign Up</Link>
-
+           
 
         </form>
         
