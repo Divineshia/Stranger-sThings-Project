@@ -81,6 +81,7 @@ export default function SignupForm({token,setToken}){
               </div>
               </header>
            
+            <div className='Signup'>
                <h2>New User</h2>
                {successMessage && <p>{successMessage}</p>}
                {error && <p>{error}</p>}
@@ -97,7 +98,7 @@ export default function SignupForm({token,setToken}){
                   
        
                </form>
-               
+               </div>
        
                </>
            )

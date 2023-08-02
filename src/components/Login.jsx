@@ -84,6 +84,7 @@ async function handleSubmit(e) {
        </div>
        </header>
     
+    <div className='Login'>
         <h2>LOG IN</h2>
         {successMessage && <p>{successMessage}</p>}
         {error && <p>{error}</p>}
@@ -102,7 +103,7 @@ async function handleSubmit(e) {
 
         </form>
         
-
+        </div>
         </>
     )
 }

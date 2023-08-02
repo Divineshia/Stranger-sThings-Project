@@ -1,19 +1,24 @@
-/* #root {
+#root {
   max-width: 1280px;
+  margin: 0% auto;
   padding: 2rem;
   
-} */
+}
 
 header{
-  display:flex;
-  justify-content: space-between;
-  background-color:cornflowerblue;
+  /* display:flex;
+  justify-content: space-between; */
+  background-color:palegoldenrod;
   font-size: large;
    color:white;
+   border:2px solid gray;
+   width:100%;
 }
 #navbar{
   display:flex;
-  justify-content: space-evenly ;
+  justify-content: space-between ;
+  color:whitesmoke;
+  font-weight: bolder;
   
 }
 
@@ -21,3 +26,11 @@ header{
   display: flex;
   flex-direction: column;
 }
+.allposts, .Profile{
+  border:1px solid blueviolet;
+}
+
+.Login, .Signup{
+  border: 1px solid gray;
+}
+
