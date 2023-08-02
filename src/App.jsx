@@ -1,14 +1,26 @@
-import { useState } from 'react'
+import {Routes,Route} from 'react-router-dom';
+import Posts from './components/Posts';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import { useState } from 'react';
 
 import './App.css'
+import SignupForm from './components/SignupForm';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [token, setToken] = useState(null);
+  
 
   return (
     <>
-      <h1>Strangers things</h1>
-        
+    
+    <Routes>
+      <Route path ='/' element ={<Login/>}/>
+      <Route path ='/posts' element ={<Posts/>}/>
+      <Route path ='/profile' element ={<Profile/>}/>
+      <Route path ='/register' element ={<SignupForm token={token} setToken={setToken}/>}/>
+      <Route path ='/login' element ={<Login token={token} setToken={setToken}/>}/>
+      </Routes>
     </>
   )
 }
