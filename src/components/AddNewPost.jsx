@@ -9,7 +9,7 @@ export default function AddNewPost(){
       <h1>Add New post</h1>
     <form className='form' onSubmit ={handleSubmit}>
             <label>Title:{" "}
-            <input value={username}
+            <input value={title}
             onChange={(e)=>setUsername(e.target.value)}/>
             </label>
             </form>

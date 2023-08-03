@@ -45,31 +45,7 @@ export default function SignupForm({token,setToken}){
         }
       }
 console.log(token);
-      //Authentication on submitting
-  //   async function authenticate(token) {
-  //   try {
-  //     const response = await fetch(
-  //       `${BASE_URL}/someEndPoint`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           'Authorization': `Bearer ${token}`,
-  //         },
-  //         body: JSON.stringify({ 
-  //           user:{
-  //               username,
-  //           password, 
-  //       }
-  //           /* whatever things you need to send to the API */ })
-  //       });
-  //     const result = await response.json();
-  //     console.log("Authenticate Result: ", result);
-  //     setSuccessMessage(result.message);
-  //   } catch (error) {
-  //     setError(error.message);
-  //   }
-  // }
+     
     
 
     return (
