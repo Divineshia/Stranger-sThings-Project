@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 
 const COHORT_NAME = '2306-FTB-ET-WEB-FT';
@@ -11,6 +11,7 @@ export default function SignupForm({token,setToken}){
     const[password,setPassword]=useState('');
     const [successMessage, setSuccessMessage] = useState("");
     const [error, setError] = useState(null);
+    const navigate =useNavigate();
 
     
 
@@ -34,52 +35,52 @@ export default function SignupForm({token,setToken}){
           const result = await response.json();
           console.log("Signup Result: ", result);
           setToken(result.data.token);
-          authenticate(token);
           setSuccessMessage(result.data.message);
           setUsername("");
           setPassword("");
+          //authenticate(token);
           
         } catch (error) {
           setError(error.message);
         }
       }
-//console.log(token);
+console.log(token);
       //Authentication on submitting
-    async function authenticate(token) {
-    try {
-      const response = await fetch(
-        `${BASE_URL}/someEndPoint`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({ 
-            user:{
-                username,
-            password, 
-        }
-            /* whatever things you need to send to the API */ })
-        });
-      const result = await response.json();
-      console.log("Authenticate Result: ", result);
-      setSuccessMessage(result.message);
-    } catch (error) {
-      setError(error.message);
-    }
-  }
+  //   async function authenticate(token) {
+  //   try {
+  //     const response = await fetch(
+  //       `${BASE_URL}/someEndPoint`,
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           'Authorization': `Bearer ${token}`,
+  //         },
+  //         body: JSON.stringify({ 
+  //           user:{
+  //               username,
+  //           password, 
+  //       }
+  //           /* whatever things you need to send to the API */ })
+  //       });
+  //     const result = await response.json();
+  //     console.log("Authenticate Result: ", result);
+  //     setSuccessMessage(result.message);
+  //   } catch (error) {
+  //     setError(error.message);
+  //   }
+  // }
     
 
     return (
         <>
-            <header> 
-            <h2> Stranger's Things</h2>
-           <div id ='navbar'>
-               <Link to ='/'>HOME</Link>
-               <Link to ='/login'>LOGIN</Link>
+        <div id ='navbar'>
+        <h3> STRANGER'S THINGS</h3>
+            <h3 onClick={()=>navigate ("/")}>HOME</h3>
+            <h3 onClick={()=>navigate ("/login")}>LOGIN</h3>
+              
               </div>
-              </header>
+              
            
             <div className='Signup'>
                <h2>New User</h2>

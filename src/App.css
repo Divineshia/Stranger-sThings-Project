@@ -1,27 +1,25 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
-  padding: 2rem;
+  
   text-align: center;
+  width:100vw;
+  height:100vh;
 }
 
-header{
-  /* display:flex;
-  justify-content: space-between; */
-  background-color:palegoldenrod;
-  font-size: large;
-   color:white;
-   border:2px solid gray;
-   width:100%;
-}
+
 #navbar{
   display:flex;
   justify-content: space-between ;
-  color:whitesmoke;
   font-weight: bolder;
+  border:2px solid gray;
+  background-color:#264558;
+  color:white;
+  font-size: 15px;
   
 }
 
+/* Form at login page and signup page */
 .form{
   display: flex;
   flex-direction: column;
@@ -32,5 +30,8 @@ header{
 
 .Login, .Signup{
   border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
