@@ -33,6 +33,7 @@ function Profile({token}){
     myDataProfile()
 },[])
 console.log(mydata);
+//console.log(mydata.posts.title);
     return (<>
    
      
@@ -49,7 +50,15 @@ console.log(mydata);
     <div className='Profile'>
         
         <h2>Profile Name:{mydata.username}</h2>
-        <h3>Posts:{mydata.posts}</h3>
+        {/* <h3>Posts:{mydata.posts.map((data)=> 
+        <div className='myposts'>
+           
+            <h2>{data.title}</h2>
+            <p>{data.description}</p>
+            <h5>{p.price}</h5>
+            <h5>{p.location}</h5>
+            </div>)}</h3> */}
+        {/* <h3>Posts{mydata.posts.description}</h3> */}
         <h3>Messages to me:{mydata.messages}</h3>
         </div>   
         </>)

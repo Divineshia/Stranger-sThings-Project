@@ -66,17 +66,15 @@ async function handleSubmit(e) {
     
     <div className='Login'>
         <h2>LOG IN</h2>
-        {successMessage && <div>
-          <p>{successMessage}</p>
-        {navigate ("/profile")}</div>}
+        
         {error && <p>{error}</p>}
         <form className='form' onSubmit ={handleSubmit}>
             <label>Username:{" "}
-            <input value={username}
+            <input value={username} type='text' required
             onChange={(e)=>setUsername(e.target.value)}/>
             </label>
             <label>Password:{" "}
-            <input type='password' value={password}
+            <input type='password' value={password} required
             onChange={(e)=>{setPassword(e.target.value)}}/>
             </label>
            <button >LOG IN</button>
@@ -84,6 +82,9 @@ async function handleSubmit(e) {
            
 
         </form>
+        {successMessage && <div>
+          <p>{successMessage}</p>
+        {navigate ("/profile")}</div>}
         
         </div>
         </>

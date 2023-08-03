@@ -4,6 +4,7 @@ import AddNewPost from './AddNewPost';
 
 
 
+
 const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
@@ -52,11 +53,12 @@ fetchData();
 
         {allposts.map((p,index)=> <div key={index}
         className='allposts'>
-            <div>
-            {/* {p.isAuthor &&  
-            <button>Edit Post</button>
-            <button>Delete</button>} */}
-            </div>
+            {<div className='Author'>
+             {token && (p.isAuthor ===!true) ?  <div>
+            <button onClick={()=>navigate ("/posts/edit")}>Edit Post</button>
+            <button>Delete</button> </div> :<></>}
+            </div>}
+            <h5>{p.isAuthor}</h5>
             <h2>{p.title}</h2>
             <p>{p.description}</p>
             <h5>{p.price}</h5>

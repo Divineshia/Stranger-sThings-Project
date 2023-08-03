@@ -64,11 +64,11 @@ console.log(token);
                {error && <p>{error}</p>}
                <form className='form'onSubmit ={handleSubmit} >
                    <label>Username:{" "}
-                   <input value={username}
+                   <input value={username} type='text' required
                    onChange={(e)=>setUsername(e.target.value)}/>
                    </label>
                    <label>Password:{" "}
-                   <input type='password' value={password}
+                   <input type='password' value={password} required
                    onChange={(e)=>{setPassword(e.target.value)}}/>
                    </label>
                   <button>Register</button>
