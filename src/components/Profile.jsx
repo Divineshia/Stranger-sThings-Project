@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 //import { useParams } from 'react-router-dom';
 const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
-const TOKEN= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNhYTQ4MjhlM2NhYTAwMTRiMzA5ZGUiLCJ1c2VybmFtZSI6InNoaWEiLCJpYXQiOjE2OTEwMDU5NzV9.f_5NLsfeoA-CP10RsTqLQjNR6sPNyWMaNwJ0HZAwXyI';
+//const TOKEN= 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGNhYTQ4MjhlM2NhYTAwMTRiMzA5ZGUiLCJ1c2VybmFtZSI6InNoaWEiLCJpYXQiOjE2OTEwMDU5NzV9.f_5NLsfeoA-CP10RsTqLQjNR6sPNyWMaNwJ0HZAwXyI';
 
 //console.log(token);
 function Profile({token}){

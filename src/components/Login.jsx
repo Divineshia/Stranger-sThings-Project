@@ -66,10 +66,10 @@ async function handleSubmit(e) {
     
     <div className='Login'>
         <h2>LOG IN</h2>
-        {/* {successMessage && <div>
+        {successMessage && <div>
           <p>{successMessage}</p>
         {navigate ("/profile")}</div>}
-        {error && <p>{error}</p>} */}
+        {error && <p>{error}</p>}
         <form className='form' onSubmit ={handleSubmit}>
             <label>Username:{" "}
             <input value={username}

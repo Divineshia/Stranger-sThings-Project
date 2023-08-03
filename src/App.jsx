@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import './App.css'
 import SignupForm from './components/SignupForm';
+import AddNewPost from './components/AddNewPost';
 import { useState } from 'react';
 import useToken from './components/useToken';
 
@@ -18,11 +19,11 @@ console.log(token);
     <>
     
     <Routes>
-      <Route path ='/' element ={<Login/>}/>
+      <Route path ='/' element ={<Login setToken={setToken} token={token}/>}/>
       <Route path ='/posts' element ={<Posts token={token}/>}/>
       <Route path ='/profile' element ={<Profile token={token}/>}/>
       <Route path ='/register' element ={<SignupForm setToken={setToken} />}/>
-      <Route path ='/login' element ={<Login setToken={setToken} token={token} />}/>
+      <Route path ='/posts/add' element ={<AddNewPost/>}/>
       </Routes>
     </>
   )

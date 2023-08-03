@@ -52,8 +52,8 @@ console.log(token);
         <>
         <div id ='navbar'>
         <h3> STRANGER'S THINGS</h3>
+            <h3 onClick={()=>navigate ("/")}>LOGIN</h3>
             <h3 onClick={()=>navigate ("/")}>HOME</h3>
-            <h3 onClick={()=>navigate ("/login")}>LOGIN</h3>
               
               </div>
               

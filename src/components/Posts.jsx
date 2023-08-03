@@ -8,7 +8,7 @@ const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 
-function Posts(){
+function Posts({token}){
     const [allposts,setAllPosts]=useState([]);
     const navigate =useNavigate();
 
@@ -35,6 +35,7 @@ function Posts(){
 fetchData();
 },[])
    console.log(allposts) ;
+   console.log(token);
     return (<>
     
      
@@ -46,13 +47,16 @@ fetchData();
             <h3 onClick={()=>navigate ("/")}>LOG OUT</h3>
        
        </div>
-       
+        {token && <button onClick={()=>{navigate ("/posts/add")}}
+            >Add New Post</button>}
 
         {allposts.map((p,index)=> <div key={index}
         className='allposts'>
-             {p.isauthor && 
-            <button onClick={()=><AddNewPost/>}
-            >Add New Post</button>}
+            <div>
+            {/* {p.isAuthor &&  
+            <button>Edit Post</button>
+            <button>Delete</button>} */}
+            </div>
             <h2>{p.title}</h2>
             <p>{p.description}</p>
             <h5>{p.price}</h5>
