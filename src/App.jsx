@@ -7,15 +7,12 @@ import SignupForm from './components/SignupForm';
 import AddNewPost from './components/AddNewPost';
 import EditPost from './components/IsAuthor/EditPost';
 import { useState } from 'react';
-import useToken from './components/useToken';
+
 
 
 function App() {
   const[token,setToken]= useState(null);
-  // if(!token){
-  //   return <Login setToken ={setToken}/>
-  // }
-console.log(token);
+//console.log(token);
   return (
     <>
     
@@ -25,7 +22,7 @@ console.log(token);
       <Route path ='/profile' element ={<Profile token={token}/>}/>
       <Route path ='/register' element ={<SignupForm setToken={setToken} />}/>
       <Route path ='/posts/add' element ={<AddNewPost token={token}/>}/>
-      <Route path ='/posts/edit' element ={<EditPost token={token}/>}/>
+      <Route path ='/posts/:POST_ID' element ={<EditPost token={token}/>}/>
       </Routes>
     </>
   )

@@ -14,7 +14,7 @@ function Posts({token}){
     const navigate =useNavigate();
 
     useEffect(()=>{
-        async function fetchData(token){
+        async function fetchData(){
             try{
                 const response = await fetch(`${BASE_URL}/posts`,{
                     method: "GET",
@@ -34,7 +34,7 @@ function Posts({token}){
 
 }
 fetchData();
-},[])
+},[token])
    console.log(allposts) ;
    console.log(token);
     return (<>
@@ -55,7 +55,7 @@ fetchData();
         className='allposts'>
             {<div className='Author'>
              {token && (p.isAuthor ===!true) ?  <div>
-            <button onClick={()=>navigate ("/posts/edit")}>Edit Post</button>
+            <button onClick={()=>navigate ("/posts/:_id")}>View</button>
             <button>Delete</button> </div> :<></>}
             </div>}
             <h5>{p.isAuthor}</h5>
@@ -63,6 +63,7 @@ fetchData();
             <p>{p.description}</p>
             <h5>{p.price}</h5>
             <h5>{p.location}</h5>
+            
            
         
         </div>

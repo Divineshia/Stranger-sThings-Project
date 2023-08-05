@@ -18,6 +18,13 @@ export default function SignupForm({token,setToken}){
     
     async function handleSubmit(e) {
         e.preventDefault();
+
+        if(error){
+          console.log('Did not send...');
+          setUsername("");
+          setPassword("");
+          return ;
+        }
         try {
           const response = await fetch(`${BASE_URL}/users/register`,
             {
@@ -38,13 +45,24 @@ export default function SignupForm({token,setToken}){
           setSuccessMessage(result.data.message);
           setUsername("");
           setPassword("");
-          //authenticate(token);
+          
           
         } catch (error) {
           setError(error.message);
         }
       }
-console.log(token);
+//console.log('Token',token);
+
+
+function passwordValidation(event){
+  let passwrd = event.target.value;
+  if (passwrd.length < 4){
+     setError('Password is too short!')
+  } else {
+    setError("")
+  }
+setPassword(passwrd);
+}
      
     
 
@@ -69,7 +87,7 @@ console.log(token);
                    </label>
                    <label>Password:{" "}
                    <input type='password' value={password} required
-                   onChange={(e)=>{setPassword(e.target.value)}}/>
+                   onChange={passwordValidation}/>
                    </label>
                   <button>Register</button>
                   

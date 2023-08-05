@@ -7,14 +7,15 @@ const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 //console.log(token);
 function Profile({token}){
-    const [mydata,setMyData]=useState([]);
+    const [user,setUser]=useState({});
+    const [message, setMessage] = useState('')
     const navigate =useNavigate();
     
 
     useEffect(()=>{
-    const myDataProfile = async () => {
+    const userProfile = async () => {
         try {
-          console.log(token);
+          //console.log(token);
           const response = await fetch(`${BASE_URL}/users/me`, {
             method:'GET',
             headers: {
@@ -23,16 +24,17 @@ function Profile({token}){
             },
           });
           const result = await response.json();
-          console.log(result);
-          setMyData(result.data);
+          console.log('Profile result',result);
+          setUser(result.data);
+          setMessage(result.data.messages)
         } catch (err) {
           console.error(err);
         }
       
     }
-    myDataProfile()
-},[])
-console.log(mydata);
+    userProfile()
+},[token])
+//console.log(user);
 //console.log(mydata.posts.title);
     return (<>
    
@@ -49,7 +51,7 @@ console.log(mydata);
 
     <div className='Profile'>
         
-        <h2>Profile Name:{mydata.username}</h2>
+        <h2>Profile Name:{user.username}</h2>
         {/* <h3>Posts:{mydata.posts.map((data)=> 
         <div className='myposts'>
            
@@ -59,7 +61,7 @@ console.log(mydata);
             <h5>{p.location}</h5>
             </div>)}</h3> */}
         {/* <h3>Posts{mydata.posts.description}</h3> */}
-        <h3>Messages to me:{mydata.messages}</h3>
+        <h3>Messages to me:{message}</h3>
         </div>   
         </>)
 }

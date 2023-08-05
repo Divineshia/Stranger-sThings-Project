@@ -18,6 +18,13 @@ const navigate =useNavigate();
 
 async function handleSubmit(e) {
     e.preventDefault();
+    if (error){
+      // DONT SUBMIT THE FORM
+      console.log('Did not send...')
+      setUsername("");
+      setPassword("");
+      return
+  }
     try {
       const response = await fetch(`${BASE_URL}/users/login`,
         {
@@ -36,13 +43,11 @@ async function handleSubmit(e) {
       console.log("Login Result: ", result);
       const Token =result.data.token
       console.log(Token);
-      console.log(setToken);
+      //console.log(setToken);
       setToken(Token);
-      //console.log(token);
       setSuccessMessage(result.data.message);
-      setUsername("");
-      setPassword("");
-      //authenticate(token);
+      navigate ("/profile");
+      
       
 
     } catch (error) {
@@ -84,7 +89,7 @@ async function handleSubmit(e) {
         </form>
         {successMessage && <div>
           <p>{successMessage}</p>
-        {navigate ("/profile")}</div>}
+        </div>}
         
         </div>
         </>

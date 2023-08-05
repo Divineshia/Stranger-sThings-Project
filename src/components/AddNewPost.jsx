@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
@@ -15,6 +15,8 @@ export default function AddNewPost({token}){
 
     async function handleSubmit(e) {
         e.preventDefault();
+      
+        useEffect(()=>{
     const makePost = async () => {
         try {
           const response = await fetch(`${BASE_URL}/posts`, {
@@ -46,14 +48,15 @@ export default function AddNewPost({token}){
       setDescription('');
       setPrice('');
       setLocation('');
-    }
+    },[token] )
+  }
 
 
     return(
     <>
     <div className="add-form">
       <h1>Add New post</h1>
-    <form className='form' onSubmit ={handleSubmit}>
+    <form className='post-form' onSubmit ={handleSubmit}>
             <label>Title:{" "}
             <input value={title}
             onChange={(e)=>setTitle(e.target.value)}/>
