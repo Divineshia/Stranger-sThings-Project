@@ -54,17 +54,20 @@ fetchData();
         {allposts.map((p,index)=> <div key={index}
         className='allposts'>
             {<div className='Author'>
-             {token && (p.isAuthor ===!true) ?  <div>
-            <button onClick={()=>navigate ("/posts/:_id")}>View</button>
-            <button>Delete</button> </div> :<></>}
+             {token && (p.isAuthor !=false) ? 
+            <button onClick={()=>{navigate ('/posts/:_id')}}>View</button>
+              :<></>}
             </div>}
             <h5>{p.isAuthor}</h5>
             <h2>{p.title}</h2>
             <p>{p.description}</p>
             <h5>{p.price}</h5>
             <h5>{p.location}</h5>
-            
-           
+            {<div className='Author'>
+             {token && (p.isAuthor ===false) ? 
+            <button onClick={()=>{navigate ('/posts/:_id/messages')}}>SEND MESSAGE </button>
+              :<></>}
+           </div>}
         
         </div>
 

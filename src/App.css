@@ -23,6 +23,7 @@
 .form{
   display: flex;
   flex-direction: column;
+  gap :5px;
 }
 .allposts, .Profile, .add-form{
   border:1px solid blueviolet;
@@ -39,5 +40,11 @@
   display: flex;
   flex-direction: column;
   align-items:center;
+  gap :15px;
+
   
+}
+
+button{
+  border: 3px solid gray;
 }
