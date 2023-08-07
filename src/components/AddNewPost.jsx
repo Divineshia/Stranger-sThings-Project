@@ -16,7 +16,7 @@ export default function AddNewPost({token}){
     async function handleSubmit(e) {
         e.preventDefault();
       
-        useEffect(()=>{
+        
     const makePost = async () => {
         try {
           const response = await fetch(`${BASE_URL}/posts`, {
@@ -48,8 +48,8 @@ export default function AddNewPost({token}){
       setDescription('');
       setPrice('');
       setLocation('');
-    },[token] )
-  }
+    }
+
 
 
     return(

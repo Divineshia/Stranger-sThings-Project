@@ -5,8 +5,8 @@ const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 export default function EditForm({token}){
-    const { _id } = useParams();
-    console.log( _id);
+    const { id } = useParams();
+    console.log( id);
     const navigate = useNavigate();
     const[title,setTitle]=useState('');
     const[description,setDescription]=useState('');
@@ -24,7 +24,7 @@ export default function EditForm({token}){
           // You will need to insert a variable into the fetch template literal 
           // in order to make the POST_ID dynamic. 
           // 64cbfe2ef168c40014084496 is just for demonstration.
-          const response = await fetch(`${BASE_URL}/posts/?id=${_id}`, {
+          const response = await fetch(`${BASE_URL}/posts/${id}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json',

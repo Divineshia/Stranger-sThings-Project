@@ -4,14 +4,9 @@ import {useState,useEffect} from 'react';
 const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
-export default function DeletePost({token}){
-    const { _id } = useParams();
+export default function ViewPost({token}){
+    const { id } = useParams();
     const navigate = useNavigate();
-    const[title,setTitle]=useState('');
-    const[description,setDescription]=useState('');
-    const[price, setPrice] = useState('');
-    const [location, setLocation] = useState ('');
-    const [willDeliver,setWillDeliver] = useState(false);
     const [post,setPost]=useState([]);
     
     
@@ -19,7 +14,7 @@ export default function DeletePost({token}){
      //call for deleting the post
      const deletePost = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/posts/?id=${_id}`, {
+        const response = await fetch(`${BASE_URL}/posts/${id}`, {
           method: "DELETE",
           headers: {
             'Content-Type': 'application/json',
@@ -37,17 +32,18 @@ export default function DeletePost({token}){
       
 
       
-  
+  console.log(id);
       useEffect(()=>{
           async function fetchsingleData(){
               try{
-                  const response = await fetch(`${BASE_URL}/posts/?id=${_id}`,{
-                    method : "GET",
+                  const response = await fetch(`https://strangers-things.herokuapp.com/api/2306-FTB-ET-WEB-FT/posts/${id}`,
+                  {
+                    method: "GET",
                     headers: {
                       'Content-Type': 'application/json',
                       'Authorization': `Bearer ${token}`
-                  },
-
+                    },
+                  
                   });
                   const result = await response.json();
                   console.log(result);
@@ -59,21 +55,25 @@ export default function DeletePost({token}){
   
             }
   fetchsingleData();
-  },[token])
+  },[id])
      console.log(post) ;
      console.log(post.title) ;
 
     return(
     <>
     
-    <h2> My post lists</h2>
-
-    <h2>{post.data}</h2>
-    <h2>{post.title}</h2>
-            <p>{post.description}</p>
-            <h5>{post.price}</h5>
-            <h5>{post.location}</h5>
-    < button onClick={()=>navigate ("/posts/:_id/edit")}>EDIT</button>
+    <h2> My post Details</h2>
+    {post && (
+        <>
+          <h2>{post.title}</h2>
+          <p>{post.description}</p>
+          <h5>{post.price}</h5>
+          <h5>{post.location}</h5>
+        </>
+      )}
+  
+            
+    < button onClick={()=>navigate ("/posts/:id/edit")}>EDIT</button>
     <button onClick={deletePost}>DELETE</button>
     <button onClick={()=>navigate ("/posts")}>BACK </button>
 

@@ -4,9 +4,10 @@ import Login from './components/Login';
 import Profile from './components/Profile';
 import SignupForm from './components/SignupForm';
 import AddNewPost from './components/AddNewPost';
-import DeletePost from './components/IsAuthor/DeletePost';
+import ViewPost from './components/IsAuthor/ViewPost';
 import EditForm from './components/IsAuthor/EditForm';
 import Message from './components/IsAuthor/Message';
+//import ViewPost from './components/IsAuthor/test';
 import './App.css'
 import { useState } from 'react';
 
@@ -23,10 +24,12 @@ function App() {
       <Route path ='/posts' element ={<Posts token={token}/>}/>
       <Route path ='/profile' element ={<Profile token={token}/>}/>
       <Route path ='/register' element ={<SignupForm setToken={setToken} />}/>
+      <Route path ='/posts/:id' element ={<ViewPost token={token}/>}/>
+      <Route path ='/posts/:id/edit' element ={<EditForm token={token}/>}/>
+      <Route path ='/posts/:id/messages' element ={<Message token={token}/>}/>
       <Route path ='/posts/add' element ={<AddNewPost token={token}/>}/>
-      <Route path ='/posts/:_id' element ={<DeletePost token={token}/>}/>
-      <Route path ='/posts/:_id/edit' element ={<EditForm token={token}/>}/>
-      <Route path ='/posts/:_id/messages' element ={<Message token={token}/>}/>
+      
+      
       
       </Routes>
     </>

@@ -10,6 +10,7 @@ function Profile({token}){
     const [user,setUser]=useState({});
     const [message, setMessage] = useState('')
     const navigate =useNavigate();
+    const [posts,setPosts]= useState([]);
     
 
     useEffect(()=>{
@@ -27,6 +28,7 @@ function Profile({token}){
           console.log('Profile result',result);
           setUser(result.data);
           setMessage(result.data.messages)
+          setPosts(result.data.posts)
         } catch (err) {
           console.error(err);
         }
@@ -35,7 +37,7 @@ function Profile({token}){
     userProfile()
 },[token])
 //console.log(user);
-//console.log(mydata.posts.title);
+console.log(posts);
     return (<>
    
      
@@ -52,15 +54,16 @@ function Profile({token}){
     <div className='Profile'>
         
         <h2>Profile Name:{user.username}</h2>
-        {/* <h3>Posts:{mydata.posts.map((data)=> 
-        <div className='myposts'>
+        {posts &&
+        <h3>Posts:{posts.map((data)=> 
+        (<div className='myposts' key ={data.id}>
            
             <h2>{data.title}</h2>
             <p>{data.description}</p>
-            <h5>{p.price}</h5>
-            <h5>{p.location}</h5>
-            </div>)}</h3> */}
-        {/* <h3>Posts{mydata.posts.description}</h3> */}
+            <p>{data.price}</p>
+            <p>{data.location}</p>
+            </div>))}</h3> }
+        
         <h3>Messages to me:{message}</h3>
         </div>   
         </>)
