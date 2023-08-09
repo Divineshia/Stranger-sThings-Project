@@ -49,6 +49,7 @@ button{
   border: 3px solid gray;
 }
 
-.search{
+.search, .mymesg{
   border:1px solid blue;
 }
+

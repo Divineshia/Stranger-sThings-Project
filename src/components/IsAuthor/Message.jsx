@@ -8,6 +8,7 @@ export default function Message({token}){
     const { _id } = useParams();
     const [content, setContent] = useState('');
     const [mesg, setMesg] = useState('');
+    //const [successMesg,setSuccessMesg] = useState("");
     const navigate = useNavigate();
     console.log(useParams());
     
@@ -27,9 +28,10 @@ export default function Message({token}){
             })
           });
           const result = await response.json();
-          console.log(result);
+          console.log('posted message',result);
           //console.log(result.data.message.content);
           setMesg(result);
+         
           setContent('');
         } catch (err) {
           console.error(err);
@@ -41,9 +43,9 @@ export default function Message({token}){
 
     return(
         <>
-         {mesg && <div>
-          <p>{mesg}</p>
-        </div>}
+         {/* {successMesg && <div>
+          <p>{successMesg}</p>
+        </div>} */}
         <div className="message">
         <h2> Message User about this Post</h2>
         <label>Title:

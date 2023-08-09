@@ -38,6 +38,7 @@ function Profile({token}){
 },[token])
 //console.log(user);
 console.log(posts);
+console.log(message);
     return (<>
    
      
@@ -54,18 +55,27 @@ console.log(posts);
     <div className='Profile'>
         
         <h2>Profile Name:{user.username}</h2>
-        {posts &&
-        <h3>Posts:{posts.map((data)=> 
-        (<div className='myposts' key ={data.id}>
+        {posts && <div>
+        <h3>My Posts:</h3>
+        {posts.map((data,index)=> 
+        (<div className='myposts' key ={index}>
            
             <h2>{data.title}</h2>
             <p>{data.description}</p>
             <p>{data.price}</p>
             <p>{data.location}</p>
-            </div>))}</h3> }
+            </div>))}  
+            </div> }
+            {message && <div>
+        <h3>Messages to me: </h3>
+          {message.map((mesg,index)=> (<div className= 'mymesg' key ={index}>
+            <p>{mesg.content}</p>
+            {/* <p>{mesg.fromUser.username}</p> */}
+           
+           
+        </div>   ))}</div>}
         
-        <h3>Messages to me:{message}</h3>
-        </div>   
+        </div>
         </>)
 }
 export default Profile

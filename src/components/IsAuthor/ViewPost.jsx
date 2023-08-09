@@ -34,31 +34,28 @@ export default function ViewPost({token}){
 
       
   
-  //     useEffect(()=>{
-  //         async function fetchsingleData(){
-  //             try{
-  //                 const response = await fetch(`https://strangers-things.herokuapp.com/api/2306-FTB-ET-WEB-FT/posts/${_id}`,
-  //                 {
-  //                   method: "GET",
-  //                   headers: {
-  //                     'Content-Type': 'application/json',
-  //                     'Authorization': `Bearer ${token}`
-  //                   },
+      useEffect(()=>{
+          async function fetchsingleData(){
+              try{
+                  const response = await fetch(`${BASE_URL}/posts/${_id}`,
+
+                  {
+                    method: "GET"
                   
-  //                 });
-  //                 const result = await response.json();
-  //                 console.log('View post result',result);
-  //                 setPost(result.data.posts)
-  //             }
-  //             catch(error){
-  //                 console.log('Error at getting posts',error);
-  //             }
+                  });
+                  const result = await response.json();
+                  console.log('View post result',result);
+                  setPost(result.data.posts)
+              }
+              catch(error){
+                  console.log('Error at getting posts',error);
+              }
   
-  //           }
-  // fetchsingleData();
-  // },[_id])
-  //    console.log(post) ;
-  //    console.log(post.title) ;
+            }
+  fetchsingleData();
+  },[_id])
+     console.log(post) ;
+     console.log(post.title) ;
 
     return(
     <>
