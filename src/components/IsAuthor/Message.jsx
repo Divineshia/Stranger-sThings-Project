@@ -5,15 +5,16 @@ const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 export default function Message({token}){
-    const { id } = useParams();
+    const { _id } = useParams();
     const [content, setContent] = useState('');
     const [mesg, setMesg] = useState('');
     const navigate = useNavigate();
+    console.log(useParams());
     
 
     const postMessage = async () => {
         try {
-          const response = await fetch(`${BASE_URL}/posts/${id}/messages`, {
+          const response = await fetch(`${BASE_URL}/posts/${_id}/messages`, {
             method: "POST",
             headers: {
               'Content-Type': 'application/json',
@@ -27,8 +28,9 @@ export default function Message({token}){
           });
           const result = await response.json();
           console.log(result);
-          setContent('');
+          //console.log(result.data.message.content);
           setMesg(result);
+          setContent('');
         } catch (err) {
           console.error(err);
         }
@@ -39,6 +41,9 @@ export default function Message({token}){
 
     return(
         <>
+         {mesg && <div>
+          <p>{mesg}</p>
+        </div>}
         <div className="message">
         <h2> Message User about this Post</h2>
         <label>Title:

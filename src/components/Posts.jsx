@@ -95,8 +95,9 @@ console.log('Searched posts result',filteredData);
         className='allposts'>
             {/* 3. View posts, edit and delete only if authenticated and isauthor true for the post */}
             {<div className='Author'>
-             {token && (p.isAuthor !=false) ? 
-            <button onClick={()=>{navigate ('/posts/:id')}}>View</button>
+             {token && (p.isAuthor !=false) ? <div>
+            
+            <button onClick={()=>{navigate (`/posts/${p._id}`)}}>View</button> </div>
               :<></>}
             </div>}
             <h5>{p.isAuthor}</h5>
@@ -109,7 +110,7 @@ console.log('Searched posts result',filteredData);
             can send messsges to others post but not to own*/}
             {<div className='Author'>
              {token && (p.isAuthor ===false) ? 
-            <button onClick={()=>{navigate ('/posts/:id/messages')}}>SEND MESSAGE </button>
+            <button onClick={()=>{navigate (`/posts/${p._id}/messages`)}}>SEND MESSAGE </button>
               :<></>}
            </div>}
         

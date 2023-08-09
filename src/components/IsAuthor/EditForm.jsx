@@ -5,8 +5,8 @@ const COHORT_NAME = '2306-FTB-ET-WEB-FT';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`
 
 export default function EditForm({token}){
-    const { id } = useParams();
-    console.log( id);
+    const { _id } = useParams();
+    //console.log( useParams());
     const navigate = useNavigate();
     const[title,setTitle]=useState('');
     const[description,setDescription]=useState('');
@@ -19,12 +19,13 @@ export default function EditForm({token}){
     async function handleSubmit(e) {
         e.preventDefault();
     //Call for updating the post 
+
     const updatePost = async () => {
         try {
           // You will need to insert a variable into the fetch template literal 
           // in order to make the POST_ID dynamic. 
           // 64cbfe2ef168c40014084496 is just for demonstration.
-          const response = await fetch(`${BASE_URL}/posts/${id}`, {
+          const response = await fetch(`${BASE_URL}/posts/${_id}`, {
             method: "PATCH",
             headers: {
               'Content-Type': 'application/json',
@@ -41,15 +42,21 @@ export default function EditForm({token}){
             })
           });
           const result = await response.json();
-          console.log(result);
+          console.log('Patch result',result.data.post);
           setMyPost(result);
+
+
         } catch (err) {
           console.log(err);
         }
       }
       updatePost();
+      setTitle('');
+      setDescription('');
+      setPrice('');
+      setLocation('');
+    
     }
-
     return(
     <>
      <button onClick={()=>navigate ("/posts")}>BACK</button>

@@ -24,9 +24,9 @@ function App() {
       <Route path ='/posts' element ={<Posts token={token}/>}/>
       <Route path ='/profile' element ={<Profile token={token}/>}/>
       <Route path ='/register' element ={<SignupForm setToken={setToken} />}/>
-      <Route path ='/posts/:id' element ={<ViewPost token={token}/>}/>
-      <Route path ='/posts/:id/edit' element ={<EditForm token={token}/>}/>
-      <Route path ='/posts/:id/messages' element ={<Message token={token}/>}/>
+      <Route path ='/posts/:_id' element ={<ViewPost token={token}/>}/>
+      <Route path ='/posts/:_id/edit' element ={<EditForm token={token}/>}/>
+      <Route path ='/posts/:_id/messages' element ={<Message token={token}/>}/>
       <Route path ='/posts/add' element ={<AddNewPost token={token}/>}/>
       
       
